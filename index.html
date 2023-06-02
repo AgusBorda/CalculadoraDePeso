@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Calculadora de Peso Ideal</title>
+            <link rel="stylesheet" type="text/css" href="style.css">
+        </head>
+        <body>
+            <div class="container">
+                <div id="calculator">
+                <h1>Calculadora de Peso Ideal</h1>
+                <label for="weight">Tu peso actual (en kg):</label>
+                <input type="number" id="weight" placeholder="Peso en kg" />
+                <label for="height">Tu altura (en cm):</label>
+                <input type="number" id="height" placeholder="Altura en cm" />
+                <button onclick="calculateIdealWeight()">Calcular</button>
+                <p id="result"></p>
+                </div>
+            </div>
+            <script>
+                function calculateIdealWeight() {
+        var weightInput = document.getElementById('weight');
+        var heightInput = document.getElementById('height');
+        var resultElement = document.getElementById('result');
+
+        var weight = parseFloat(weightInput.value);
+        var height = parseFloat(heightInput.value);
+
+        if (!isNaN(weight) && !isNaN(height)) {
+            var idealWeight = height - 100;
+
+        if (weight < idealWeight - 15) {
+            resultElement.innerHTML = 'Deberías pesar entre ' + (idealWeight - 15) + ' kg y ' + (idealWeight - 10) + ' kg. Puede ser recomendable consultar a un médico o nutricionista para evaluar tu estado de salud.';
+        } else if (weight < idealWeight) {
+            resultElement.innerHTML = 'Deberías pesar entre ' + idealWeight + ' kg y ' + (idealWeight + 5) + ' kg.';
+        }   else if (weight > idealWeight + 15) {
+            resultElement.innerHTML = 'Deberías pesar entre ' + (idealWeight + 10) + ' kg y ' + (idealWeight + 15) + ' kg. Puede ser recomendable consultar a un médico o nutricionista para evaluar tu estado de salud.';
+        }   else if (weight > idealWeight) {
+            resultElement.innerHTML = 'Deberías pesar entre ' + (idealWeight - 5) + ' kg y ' + idealWeight + ' kg.';
+        }   else {
+            resultElement.innerHTML = 'Tu peso es ideal.';
+        }
+    } else {
+        resultElement.innerHTML = 'Por favor, ingresa valores numéricos válidos.';
+            }
+                }
+
+              </script>
+        </body>
+    </html>
